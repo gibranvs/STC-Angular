@@ -1,0 +1,65 @@
+<h1>Solicitudes</h1>
+
+<p>Las solicitudes son:</p>
+
+<p *ngIf="!solicitudes"><em>Loading...</em></p>
+
+<table class='table' *ngIf="solicitudes">
+  <thead>
+    <tr>
+      <th>Solicitante</th>
+      <th>Valida</th>
+      <th>Inicio</th>
+      <th>Término</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let solicitud of solicitudes">
+      <td>{{ solicitud.FK_USUARIO_SOLICITA }}</td>
+      <td>{{ solicitud.FK_USUARIO_VALIDA }}</td>
+      <td>{{ solicitud.dateFechaInicio }}</td>
+      <td>{{ solicitud.dateFechaTermino }}</td>
+      <td>{{ solicitud.tintEstado }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div>
+  <h1>Solicitud de días económicos</h1>
+  <p>Favor de llenar los siguientes campos para realizar la solictud</p>
+  <form #solicitudesForm="ngForm" (ngSubmit)="save(solicitudesForm.value)">
+
+    <input type="hidden" name="tintVacaciones" value="1">
+    <input type="hidden" name="dateFechaSolicitud" [(ngModel)]="solicitud.dateFechaSolicitud" value="2018-12-13">
+    <input matInput placeholder="FK_USUARIO_SOLICITA" name="FK_USUARIO_SOLICITA">
+    <input matInput placeholder="FK_USUARIO_Valida" name="FK_USUARIO_VALIDA">
+    <p>
+      <label>Fecha de inicio</label>
+      <input type="date" name="dateFechaInicio"/>
+    </p>
+    <p>
+      <label>Fecha de fin</label>
+      <input type="date" name="dateFechaTermino"/>
+    </p>
+    <!--
+  <input type="hidden" name="fecha_sol" [(ngModel)]="solicitud.dateFechaSolicitud" value>
+  <input type="hidden" name="vacaciones" [(ngModel)]="solicitud.tintVacaciones">
+  <input matInput placeholder="Usuario solicitante" [(ngModel)]="solicitud.FK_USUARIO_SOLICITA" required name="solicitante">
+  <input matInput placeholder="Usuario Valida" [(ngModel)]="solicitud.FK_USUARIO_VALIDA" required name="valida">
+
+  <p>
+    <label>Fecha de inicio</label>
+    <input type="date" name="fecha_ini" [(ngModel)]="solicitud.dateFechaInicio" />
+  </p>
+  <p>
+    <label>Fecha de fin</label>
+    <input type="date" name="fecha_fin" [(ngModel)]="solicitud.dateFechaTermino" />
+  </p>-->
+    <button mat-raised-button color="primary" type="submit" [disabled]="!solicitudesForm.form.valid">
+      Guardar solicitud
+    </button>
+  </form>
+</div>
+
