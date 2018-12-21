@@ -1,6 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-solicitudes',
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class SolicitudesComponent {
   public solicitudes: Solicitud[];
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private http: HttpClient) {
     http.get<Solicitud[]>('http://localhost/Api-Taquilla/api/solicitudes').subscribe(result => {
       this.solicitudes = result;
     }, error => console.error(error));
@@ -31,14 +32,17 @@ export class SolicitudesComponent {
     //}
     return result;
   }
+
 }
 
+
 interface Solicitud {
-  PK_ID: number;
+  PK_ID?: number;
   FK_USUARIO_SOLICITA: string;
   FK_USUARIO_VALIDA: string;
   dateFechaInicio: string;
   dateFechaTermino: string;
+  dateFechaSolicitud: string;
   tintEstado: number;
 }
 
