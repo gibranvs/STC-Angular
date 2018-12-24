@@ -17,22 +17,11 @@ export class SolicitudesComponent {
 
   }
 
-  save(sol: Solicitud): Observable<Solicitud> {
-    let result: Observable<Solicitud>;
-
-    console.log("Entramos a save");
-    console.log(sol);
-   /* if (sugarLevel.id) {
-      this.http.put<Solicitud>(
-        'http://localhost/Api-Taquilla/api/solicitudes/${sugarLevel.id},
-        sugarLevel
-      );
-    } else {*/
-    result = this.http.post<Solicitud>('http://localhost/Api-Taquilla/api/solicitudes', sol);
-    //}
-    return result;
+  validar(pkid,st) {
+    this.http.get('http://localhost/Api-Taquilla/api/solicitudes/' + pkid + '/' + st).subscribe();
+    window.location.reload();
   }
-
+  
 }
 
 

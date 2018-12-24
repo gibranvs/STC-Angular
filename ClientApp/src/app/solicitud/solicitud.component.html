@@ -1,12 +1,17 @@
-<h1>Solicitud de días económicos</h1>
+<h1>Solicitud de permisos</h1>
 <p>Favor de llenar los siguientes campos para realizar la solictud</p>
 <form #solicitudesForm="ngForm" (ngSubmit)="save(solicitudesForm.value)">
+  <p>
+    <select [(ngModel)]="solicitud.tintVacaciones" name="tintVacaciones">
+      <option value="0" selected>Días económicos</option>
+      <option value="1">Vacaciones</option>
+    </select>
+  </p>
 
   <input type="hidden" [(ngModel)]="solicitud.tintEstado" name="tintEstado" value="0">
-  <input type="hidden" [(ngModel)]="solicitud.tintVacaciones" name="tintVacaciones" value="1">
   <input type="hidden" [(ngModel)]="solicitud.dateFechaSolicitud" name="dateFechaSolicitud" value="2018-12-20">
-  <input matInput placeholder="FK_USUARIO_SOLICITA" [(ngModel)]="solicitud.FK_USUARIO_SOLICITA" name="FK_USUARIO_SOLICITA">
-  <input matInput placeholder="FK_USUARIO_Valida" [(ngModel)]="solicitud.FK_USUARIO_VALIDA" name="FK_USUARIO_VALIDA">
+  <input type="hidden" placeholder="FK_USUARIO_SOLICITA" [(ngModel)]="solicitud.FK_USUARIO_SOLICITA" name="FK_USUARIO_SOLICITA">
+  <input type="hidden" placeholder="FK_USUARIO_VALIDA" [(ngModel)]="solicitud.FK_USUARIO_VALIDA" name="FK_USUARIO_VALIDA">
   <p>
     <label>Fecha de inicio</label>
     <input type="date" [(ngModel)]="solicitud.dateFechaInicio" name="dateFechaInicio" />

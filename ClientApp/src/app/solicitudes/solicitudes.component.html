@@ -7,22 +7,26 @@
 <table class='table' *ngIf="solicitudes">
   <thead>
     <tr>
-      <th>Solicitante</th>
-      <th>Valida</th>
+      <th>No. Solicitante</th>
+      <th>Nombre</th>
+      <!--<th>Valida</th>-->
       <th>Inicio</th>
       <th>Término</th>
       <th>Solicitada</th>
       <th>Estado</th>
+      <th>Acción</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let solicitud of solicitudes">
       <td>{{ solicitud.FK_USUARIO_SOLICITA }}</td>
-      <td>{{ solicitud.FK_USUARIO_VALIDA }}</td>
+      <td>{{ solicitud.usuarios.vchNombre }}</td>
+      <!--<td>{{ solicitud.FK_USUARIO_VALIDA }}</td>-->
       <td>{{ solicitud.dateFechaInicio }}</td>
       <td>{{ solicitud.dateFechaTermino }}</td>
       <td>{{ solicitud.dateFechaSolicitud }}</td>
-      <td>{{ solicitud.tintEstado }}</td>
+      <td>{{ solicitud.tintEstado == 0 ? "Pendiente" : solicitud.tintEstado == 1 ? "Aceptado" : "Rechazado"}}</td>
+      <td><button (click)="validar(solicitud.PK_ID,1)"> Aceptar</button><button (click)="validar(solicitud.PK_ID,2)"> Rechazar</button></td>
     </tr>
   </tbody>
 </table>

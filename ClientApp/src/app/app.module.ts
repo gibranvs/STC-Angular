@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { BannerTopComponent } from './banner-top/banner-top.component';
@@ -17,7 +16,6 @@ import { BannerTopComponent } from './banner-top/banner-top.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     SolicitudesComponent,
     SolicitudComponent,
     BannerTopComponent
@@ -28,7 +26,6 @@ import { BannerTopComponent } from './banner-top/banner-top.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
       { path: 'solicitudes', component: SolicitudesComponent },
       { path: 'solicitud', component: SolicitudComponent },
     ])

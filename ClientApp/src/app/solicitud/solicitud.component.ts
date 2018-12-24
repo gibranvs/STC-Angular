@@ -9,13 +9,11 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class SolicitudComponent {
   constructor(private http: HttpClient) {}
-  solicitud = { FK_USUARIO_SOLICITA: "3", FK_USUARIO_VALIDA: "1", dateFechaInicio: "2018-12-27", dateFechaTermino: "2018-12-27", dateFechaSolicitud: "2018-12-20", tintEstado: 0, tintVacaciones: 1 };
-
+  curDate = new Date();
+  solicitud = { FK_USUARIO_SOLICITA: "3", FK_USUARIO_VALIDA: "1", dateFechaInicio: "", dateFechaTermino: "", dateFechaSolicitud: this.curDate, tintEstado: 0, tintVacaciones: 0 };
   save(sol: Solicitud): Observable<Solicitud> {
     let result: Observable<Solicitud>;
-
-    console.log("Entramos a save");
-    console.log(sol);
+    
     let header = new HttpHeaders().set("content-type", "application/json");
     /* if (sugarLevel.id) {
        this.http.put<Solicitud>(
@@ -37,6 +35,7 @@ export class SolicitudComponent {
 
 
 interface Solicitud {
+  PK_ID?: number;
   FK_USUARIO_SOLICITA: string;
   FK_USUARIO_VALIDA: string;
   dateFechaInicio: string;
