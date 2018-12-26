@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { SolicitudesComponent } from './solicitudes/solicitudes.component';
 import { SolicitudComponent } from './solicitud/solicitud.component';
 import { BannerTopComponent } from './banner-top/banner-top.component';
+import { ValidadasComponent } from './validadas/validadas.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BannerTopComponent } from './banner-top/banner-top.component';
     HomeComponent,
     SolicitudesComponent,
     SolicitudComponent,
-    BannerTopComponent
+    BannerTopComponent,
+    ValidadasComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,6 +29,7 @@ import { BannerTopComponent } from './banner-top/banner-top.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'solicitudes', component: SolicitudesComponent },
+      { path: 'validadas', component: ValidadasComponent },
       { path: 'solicitud', component: SolicitudComponent },
     ])
   ],

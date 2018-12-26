@@ -4,14 +4,19 @@ import { Observable } from 'rxjs/Observable';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-solicitudes',
-  templateUrl: './solicitudes.component.html'
+  selector: 'app-validadas',
+  templateUrl: './validadas.component.html'
 })
-export class SolicitudesComponent {
+export class ValidadasComponent {
   public solicitudes: Solicitud[];
 
   constructor(private http: HttpClient) {
-    http.get<Solicitud[]>('http://localhost/Api-Taquilla/api/solicitudes').subscribe(result => {
+    let obj:any=null;
+    obj=
+      {
+        "val1":"Attribute1"
+      };
+    http.post<Solicitud[]>('http://localhost/Api-Taquilla/api/solicitudes/1',obj).subscribe(result => {
       this.solicitudes = result;
     }, error => console.error(error));
 

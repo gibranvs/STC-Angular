@@ -1,6 +1,6 @@
-<h1>Solicitudes Pendientes</h1>
+<h1>Solicitudes Atendidas</h1>
 
-<p>Las solicitudes que aún no han sido atendidas son:</p>
+<p>Las solicitudes que ya fueron evaluadas son:</p>
 
 <p *ngIf="!solicitudes"><em>Loading...</em></p>
 
@@ -10,11 +10,12 @@
       <th>Id Solicitud</th>
       <th>No. Solicitante</th>
       <th>Nombre</th>
+      <th>Validada por:</th>
       <th>Tipo</th>
       <th>Inicio</th>
       <th>Término</th>
       <th>Solicitada</th>
-      <th>Acción</th>
+      <th>Estado</th>
     </tr>
   </thead>
   <tbody>
@@ -22,11 +23,12 @@
       <td>{{ solicitud.PK_ID }}</td>
       <td>{{ solicitud.FK_USUARIO_SOLICITA }}</td>
       <td>{{ solicitud.usuarios.vchNombre }}</td>
+      <td>{{ solicitud.usuarios1.vchNombre }}</td>
       <td>{{ solicitud.tintVacaciones == 0 ? "Días económicos" :  "Vacaciones"}}</td>
       <td>{{ solicitud.dateFechaInicio.substring(0,10) }}</td>
       <td>{{ solicitud.dateFechaTermino.substring(0,10) }}</td>
       <td>{{ solicitud.dateFechaSolicitud.substring(0,10) }}</td>
-      <td><button (click)="validar(solicitud.PK_ID,1)"> Aceptar</button><button (click)="validar(solicitud.PK_ID,2)"> Rechazar</button></td>
+      <td>{{ solicitud.tintEstado == 0 ? "Pendiente" : solicitud.tintEstado == 1 ? "Aceptado" : "Rechazado"}}</td>
     </tr>
   </tbody>
 </table>
